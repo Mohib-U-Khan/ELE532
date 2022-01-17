@@ -1,0 +1,232 @@
+
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <!--
+This HTML was auto-generated from MATLAB code.
+To make changes, update the MATLAB code and republish this document.
+      --><title>Mohib Khan</title><meta name="generator" content="MATLAB 9.10"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/"><meta name="DC.date" content="2021-11-30"><meta name="DC.source" content="B.m"><style type="text/css">
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+html { min-height:100%; margin-bottom:1px; }
+html body { height:100%; margin:0px; font-family:Arial, Helvetica, sans-serif; font-size:10px; color:#000; line-height:140%; background:#fff none; overflow-y:scroll; }
+html body td { vertical-align:top; text-align:left; }
+
+h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; line-height:100%; font-weight:normal; }
+h2 { padding:0px; margin:0px 0px 8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+h3 { padding:0px; margin:0px 0px 5px; font-family:Arial, Helvetica, sans-serif; font-size:1.1em; color:#000; font-weight:bold; line-height:140%; }
+
+a { color:#005fce; text-decoration:none; }
+a:hover { color:#005fce; text-decoration:underline; }
+a:visited { color:#004aa0; text-decoration:none; }
+
+p { padding:0px; margin:0px 0px 20px; }
+img { padding:0px; margin:0px 0px 20px; border:none; }
+p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+
+ul { padding:0px; margin:0px 0px 20px 23px; list-style:square; }
+ul li { padding:0px; margin:0px 0px 7px 0px; }
+ul li ul { padding:5px 0px 0px; margin:0px 0px 7px 23px; }
+ul li ol li { list-style:decimal; }
+ol { padding:0px; margin:0px 0px 20px 0px; list-style:decimal; }
+ol li { padding:0px; margin:0px 0px 7px 23px; list-style-type:decimal; }
+ol li ol { padding:5px 0px 0px; margin:0px 0px 7px 0px; }
+ol li ol li { list-style-type:lower-alpha; }
+ol li ul { padding-top:7px; }
+ol li ul li { list-style:square; }
+
+.content { font-size:1.2em; line-height:140%; padding: 20px; }
+
+pre, code { font-size:12px; }
+tt { font-size: 1.2em; }
+pre { margin:0px 0px 20px; }
+pre.codeinput { padding:10px; border:1px solid #d3d3d3; background:#f7f7f7; }
+pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+pre.error { color:red; }
+
+@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+
+span.keyword { color:#0000FF }
+span.comment { color:#228B22 }
+span.string { color:#A020F0 }
+span.untermstring { color:#B20000 }
+span.syscmd { color:#B28C00 }
+span.typesection { color:#A0522D }
+
+.footer { width:auto; padding:10px 0px; margin:25px 0px 0px; border-top:1px dotted #878787; font-size:0.8em; line-height:140%; font-style:italic; color:#878787; text-align:left; float:none; }
+.footer p { margin:0px; }
+.footer a { color:#878787; }
+.footer a:hover { color:#878787; text-decoration:underline; }
+.footer a:visited { color:#878787; }
+
+table th { padding:7px 5px; text-align:left; vertical-align:middle; border: 1px solid #d6d4d4; font-weight:bold; }
+table td { padding:7px 5px; text-align:left; vertical-align:top; border:1px solid #d6d4d4; }
+
+
+
+
+
+  </style></head><body><div class="content"><h1>Mohib Khan</h1><!--introduction--><!--/introduction--><h2>Contents</h2><div><ul><li><a href="#1">B.1</a></li><li><a href="#2">Encoder</a></li><li><a href="#3">Decoder</a></li><li><a href="#4">B demo</a></li></ul></div><h2 id="1">B.1</h2><pre class="codeinput">load(<span class="string">'Lab4_Data.mat'</span>);
+
+figure(1)
+plot(xspeech)
+title(<span class="string">'xspeech'</span>);
+
+figure(2)
+MagSpect(hChannel)
+title(<span class="string">'hChannel frequency domain'</span>);
+
+figure(3)
+MagSpect(hLPF2000)
+title(<span class="string">'hLPF2000 frequency domain'</span>);
+
+figure(4)
+MagSpect(hLPF2500)
+title(<span class="string">'hLPF2500 frequency domain'</span>);
+</pre><img vspace="5" hspace="5" src="B_01.png" alt=""> <img vspace="5" hspace="5" src="B_02.png" alt=""> <img vspace="5" hspace="5" src="B_03.png" alt=""> <img vspace="5" hspace="5" src="B_04.png" alt=""> <h2 id="2">Encoder</h2><pre class="codeinput">conv1 = conv(xspeech, hLPF2000);
+figure(5)
+MagSpect(conv1)
+title(<span class="string">'Convolution of xspeech, hLPF2000'</span>);
+carrier = osc(6000,80710,32000);
+figure(6)
+plot(carrier)
+title(<span class="string">'Carrier Signal'</span>);
+Mod = conv1.*carrier;
+figure(7)
+MagSpect(Mod)
+title(<span class="string">'Modulated Signal Frequency Domain'</span>);
+Output = conv(Mod, hChannel);
+figure(8)
+MagSpect(Output)
+title(<span class="string">'Encoded Signal Frequency Domain'</span>);
+</pre><img vspace="5" hspace="5" src="B_05.png" alt=""> <img vspace="5" hspace="5" src="B_06.png" alt=""> <img vspace="5" hspace="5" src="B_07.png" alt=""> <img vspace="5" hspace="5" src="B_08.png" alt=""> <img vspace="5" hspace="5" src="B_09.png" alt=""> <h2 id="3">Decoder</h2><pre class="codeinput">carrier2 = osc(6000,81520,32000);
+figure(9)
+plot(carrier2)
+title(<span class="string">'Carrier Signal #2'</span>);
+Demod = Output.*carrier2;
+figure(10)
+MagSpect(Demod)
+title(<span class="string">'Demodulated Signal Frequency Domain'</span>);
+recover_xspeech = conv(Demod, hLPF2500);
+figure(11)
+plot(recover_xspeech)
+title(<span class="string">'Decoded Signal'</span>);
+figure(12)
+MagSpect(recover_xspeech)
+sound(recover_xspeech,32000)
+title(<span class="string">'Decoded Signal Frequency Domain'</span>);
+
+<span class="comment">%The purpose of this code was to take a given audio file and encode it</span>
+<span class="comment">%using given functions and waves. Furthermore, it was to decode the encoded</span>
+<span class="comment">%signal to retrieve the original audio file. The steps I took to encode the</span>
+<span class="comment">%signal were the following: First, I convoluted the audio file with a low</span>
+<span class="comment">%pass filter to remove higher frequencies that were not needed. Second, I</span>
+<span class="comment">%multiplied the convoluted signal with a carrier signal produced by the</span>
+<span class="comment">%osc.m function. This allows the audio to be easily transmitted. Finally,</span>
+<span class="comment">%the product was convoluted with the hChannel to get the final encoded</span>
+<span class="comment">%signal.</span>
+<span class="comment">%The steps I took to decode the signal were: First, multiply the signal</span>
+<span class="comment">%with a carrier signal which prepares it for the next step. Next, I</span>
+<span class="comment">%convoluted the result with the other low pass filter to cut off the higher</span>
+<span class="comment">%frequencies and gain the final result.</span>
+</pre><img vspace="5" hspace="5" src="B_10.png" alt=""> <img vspace="5" hspace="5" src="B_11.png" alt=""> <img vspace="5" hspace="5" src="B_12.png" alt=""> <img vspace="5" hspace="5" src="B_13.png" alt=""> <img vspace="5" hspace="5" src="B_14.png" alt=""> <h2 id="4">B demo</h2><pre class="codeinput"><span class="comment">%Steps to run the code:</span>
+<span class="comment">%1. Click the "Open" icon in the top left of Matlab and open the B.m file.</span>
+<span class="comment">%2. Click "Run" under the "Editor" tab at the top of Matlab.</span>
+<span class="comment">%3. Review the graphs that pop up and read the comments in the section</span>
+<span class="comment">%above.</span>
+
+<span class="comment">%File B.m is used to implement the encoder and decoder. It first encodes</span>
+<span class="comment">%the audio file using the hLPF2000 low pass filter, a carrier signal</span>
+<span class="comment">%generated by the osc.m file and, the hChannel signal. It then takes the</span>
+<span class="comment">%encoded signal and decodes it using another carrier signal generated by</span>
+<span class="comment">%the osc.m file and, the hLPF25000 low pass filter. Finally, it plays the</span>
+<span class="comment">%final audio file.</span>
+</pre><p class="footer"><br><a href="https://www.mathworks.com/products/matlab/">Published with MATLAB&reg; R2021a</a><br></p></div><!--
+##### SOURCE BEGIN #####
+%% Mohib Khan
+%% B.1
+load('Lab4_Data.mat');
+
+figure(1)
+plot(xspeech)
+title('xspeech');
+
+figure(2)
+MagSpect(hChannel)
+title('hChannel frequency domain');
+
+figure(3)
+MagSpect(hLPF2000)
+title('hLPF2000 frequency domain');
+
+figure(4)
+MagSpect(hLPF2500)
+title('hLPF2500 frequency domain');
+
+%% Encoder
+conv1 = conv(xspeech, hLPF2000);
+figure(5)
+MagSpect(conv1)
+title('Convolution of xspeech, hLPF2000');
+carrier = osc(6000,80710,32000);
+figure(6)
+plot(carrier)
+title('Carrier Signal');
+Mod = conv1.*carrier;
+figure(7)
+MagSpect(Mod)
+title('Modulated Signal Frequency Domain');
+Output = conv(Mod, hChannel);
+figure(8)
+MagSpect(Output)
+title('Encoded Signal Frequency Domain');
+
+%% Decoder
+carrier2 = osc(6000,81520,32000);
+figure(9)
+plot(carrier2)
+title('Carrier Signal #2');
+Demod = Output.*carrier2;
+figure(10)
+MagSpect(Demod)
+title('Demodulated Signal Frequency Domain');
+recover_xspeech = conv(Demod, hLPF2500);
+figure(11)
+plot(recover_xspeech)
+title('Decoded Signal');
+figure(12)
+MagSpect(recover_xspeech)
+sound(recover_xspeech,32000)
+title('Decoded Signal Frequency Domain');
+
+%The purpose of this code was to take a given audio file and encode it
+%using given functions and waves. Furthermore, it was to decode the encoded
+%signal to retrieve the original audio file. The steps I took to encode the
+%signal were the following: First, I convoluted the audio file with a low
+%pass filter to remove higher frequencies that were not needed. Second, I
+%multiplied the convoluted signal with a carrier signal produced by the
+%osc.m function. This allows the audio to be easily transmitted. Finally,
+%the product was convoluted with the hChannel to get the final encoded
+%signal.
+%The steps I took to decode the signal were: First, multiply the signal
+%with a carrier signal which prepares it for the next step. Next, I 
+%convoluted the result with the other low pass filter to cut off the higher
+%frequencies and gain the final result.
+
+%% B demo
+
+%Steps to run the code:
+%1. Click the "Open" icon in the top left of Matlab and open the B.m file.
+%2. Click "Run" under the "Editor" tab at the top of Matlab.
+%3. Review the graphs that pop up and read the comments in the section
+%above.
+
+%File B.m is used to implement the encoder and decoder. It first encodes
+%the audio file using the hLPF2000 low pass filter, a carrier signal
+%generated by the osc.m file and, the hChannel signal. It then takes the
+%encoded signal and decodes it using another carrier signal generated by
+%the osc.m file and, the hLPF25000 low pass filter. Finally, it plays the
+%final audio file.
+##### SOURCE END #####
+--></body></html>
