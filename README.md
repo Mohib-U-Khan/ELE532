@@ -1,4 +1,4 @@
-# ELE532
+# ELE532 Labs
 
 All labs code for ELE532.
 
